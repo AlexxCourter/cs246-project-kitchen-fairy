@@ -46,11 +46,9 @@ public class DataController {
             //creates a new FileWriter which can write the JSON file.
             //The path should be retrieved with getAbsolutePath()
             FileWriter writer = new FileWriter(file.getAbsolutePath());
-            //tell Gson to convert the player object to a json file and write it to player_save.json with the writer
             gson.toJson(instance, writer);
             //make sure to close the writer!
             writer.close();
-//            Log.d("UserReference", String.valueOf(instance.recipes));
             //catch any input/output exceptions related to writing the file.
         } catch (IOException e) {
             e.printStackTrace();
@@ -98,8 +96,13 @@ public class DataController {
         return UserReference.getInstance();
     }
 
-    //search functions for updating existing data objects: specifically, recipe objects. Finds the ID that was obtained
-    //by the calling activity, and uses that to search for and update the corresponding recipe.
+    /**
+     * updateRecipeById finds a recipe by iterating through the recipes contained in the UserReference data object.
+     * Changes the recipe saved in the UserReference to the new recipe passed in to this function
+     * saveReference() must be called in the activity that uses this method in order to make sure that the update is saved.
+     *
+     * @param recipe : a Recipe object that will update the recipe with the same id in the UserReference
+     * */
     public void updateRecipeById(Recipe recipe){
         UserReference ur = UserReference.getInstance();
 
@@ -115,6 +118,13 @@ public class DataController {
         }
     }
 
+    /**
+     * updateShoppingById finds a shopping list by iterating through the lists contained in the UserReference data object.
+     * Changes the shopping list saved in the UserReference to the new shopping list passed in to this function
+     * saveReference() must be called in the activity that uses this method in order to make sure that the update is saved.
+     *
+     * @param shopping : a Shopping object that will update the shopping list with the same id in the UserReference
+     * */
     public void updateShoppingById(Shopping shopping){
         UserReference ur = UserReference.getInstance();
 
@@ -130,6 +140,14 @@ public class DataController {
         }
     }
 
+    /**
+     * findRecipeById finds a recipe by iterating through the recipes contained in the UserReference data object.
+     * If the id is found in the UserReference, returns true. If not, returns false. This check ensures that changes always point
+     * to a recipe that exists.
+     *
+     * @param id : an id that will be searched to find if a recipe with the same id exists in UserReference
+     * @return boolean
+     * */
     public boolean findRecipeById(int id){
         UserReference ur = UserReference.getInstance();
         for (Recipe r : ur.recipes){
@@ -140,6 +158,14 @@ public class DataController {
         return false;
     }
 
+    /**
+     * findShoppingById finds a shopping list by iterating through the lists contained in the UserReference data object.
+     * If the id is found in the UserReference, returns true. If not, returns false. This check ensures that changes always point
+     * to a shopping list that exists.
+     *
+     * @param id : an id that will be searched to find if a shopping list with the same id exists in UserReference
+     * @return boolean
+     * */
     public boolean findShoppingById(int id){
         UserReference ur = UserReference.getInstance();
         for (Shopping s : ur.shoppingLists){
@@ -150,6 +176,16 @@ public class DataController {
         return false;
     }
 
+    /**
+     * deleteRecipeById deletes a recipe by iterating through the recipes contained in the UserReference data object.
+     * If the id is found in the UserReference, the recipe containing that id is deleted.
+     * this is done by repopulating a new list that excludes the selected recipe by id.
+     * the new list is then saved to the UserReference, and the recipeIdHolder is updated with the proper number of items
+     *
+     * saveReference() must be called by the calling activity in order to ensure that changes to the data are saved.
+     *
+     * @param id : an id that will be searched to find if it exists in UserReference. If it exists, creates a new list excluding that recipe
+     * */
     public void deleteRecipeById(int id){
         UserReference ur = UserReference.getInstance();
         if(findRecipeById(id)){
@@ -165,6 +201,16 @@ public class DataController {
         }
     }
 
+    /**
+     * deleteShoppingById deletes a shopping list by iterating through the lists contained in the UserReference data object.
+     * If the id is found in the UserReference, the shopping list containing that id is deleted.
+     * this is done by repopulating a new list that excludes the selected shopping list by id.
+     * the new list is then saved to the UserReference, and the shoppingIdHolder is updated with the proper number of items
+     *
+     * saveReference() must be called by the calling activity in order to ensure that changes to the data are saved.
+     *
+     * @param id : an id that will be searched to find if it exists in UserReference. If it exists, creates a new list excluding that shopping list
+     * */
     public void deleteShoppingById(int id){
         UserReference ur = UserReference.getInstance();
         if(findShoppingById(id)){

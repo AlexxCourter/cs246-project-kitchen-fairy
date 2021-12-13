@@ -78,7 +78,6 @@ public class RecipeEditorScreenTwo extends Fragment {
      *
      * @return A new instance of fragment RecipeEditorScreenTwo.
      */
-
     public static RecipeEditorScreenTwo newInstance(int ARG_ID, ArrayList<String> ARG_INGR, ArrayList<String> ARG_NOTE, String ARG_NAME, byte[] ARG_IMG) {
         RecipeEditorScreenTwo fragment = new RecipeEditorScreenTwo();
         Bundle args = new Bundle();
@@ -202,6 +201,13 @@ public class RecipeEditorScreenTwo extends Fragment {
         lvInstructions.setAdapter(adapterB);
     }
 
+    /**
+     * updateRecipeObject creates a recipe using the data contained in the editor and returns it to calling function
+     * the calling function uses this function to create a new recipe object contained in the UserReference.
+     * gets the id to be used by finding the current recipeIdHolder in the UserReference.
+     *
+     * @return recipe object
+     * */
     public Recipe makeNewRecipeObject(){
         //prepare the data to be saved in a new Recipe() object.
         int recipeID = user.getRecipeIDHolder();
@@ -209,6 +215,14 @@ public class RecipeEditorScreenTwo extends Fragment {
         return recipe;
     }
 
+    /**
+     * updateRecipeObject creates a recipe using the data contained in the editor and returns it to calling function
+     * the calling function uses this function to update a recipe object contained in the UserReference.
+     *
+     * @param id : an integer representing the unique id of the recipe.
+     *
+     * @return recipe object
+     * */
     public Recipe updateRecipeObject(int id){
         Recipe recipe = new Recipe(id, getArgName(), getArgIngredient(), getArgNote(), recipeImgByte);
         return recipe;

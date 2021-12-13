@@ -23,10 +23,17 @@ public class RecipeList extends AppCompatActivity {
     ListView listview;
     ArrayList<ItemModel> lists;
     ArrayAdapter<String> adapter;
-    UserReference user; //ideally this is where access to current lists would come from
+    UserReference user;
     ArrayList<String> listsNames;
     FloatingActionButton fab;
 
+
+    /**
+     * onCreate sets the layout to the recipe list layout.
+     * holds a reference to the UserReference object
+     * gets the views in the recipe list layout and populates them with available data.
+     * uses an ArrayAdapter to display the recipes contained in the UserReference in a listview.
+     * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,23 +46,8 @@ public class RecipeList extends AppCompatActivity {
         //target the floating action button
         fab = findViewById(R.id.faCreateRecipe);
 
-        //instantiate a list of ingredients
-        ArrayList<String> testIngredients = new ArrayList<>();
-        //and a list of instructions
-        ArrayList<String> testInstructions = new ArrayList<>();
         //add items to lists
-
-        //code between these comments is debug only
-//        testIngredients.add("2 cups Almond Milk");
-//        testIngredients.add("2 Tbsp Peanut Butter");
-//        testIngredients.add("1 tsp Cinnamon");
-//        testIngredients.add("1 Banana");
-//        testInstructions.add("Combine ingredients in blender.");
-//        testInstructions.add("blend until smooth.");
-//        testInstructions.add("Serve topped with whipped cream and nutmeg.");
         lists = new ArrayList<ItemModel>();
-//        Recipe test = new Recipe(1,"Peanut Butter Banana Shake", testIngredients, testInstructions, null);
-//        lists.add(test);
 
         for (ItemModel r : user.recipes){
             lists.add(r);
@@ -67,18 +59,18 @@ public class RecipeList extends AppCompatActivity {
         }
         //the code between these comments is debug only. Remove at next phase
 
-        //set an onitemclicklistener that catches clicks on the shopping lists.
+        /**
+         * this onItemClickListener takes the recipe selected by user and opens it in the ItemViewer activity.
+         * */
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 System.out.println(position);
                 String name = listsNames.get(position);
                 ItemModel item = lists.get(position); //access item and send to viewing activity
-                Log.d("RecipeList", "" + name);
                 //bundle the object. Helps protect it from becoming null when passed
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("ItemModel", item);
-
 
                 //create intent to open viewer activity for the list. Pass item to intent using extra for serializable items
                 Intent intent = new Intent(getApplicationContext(), ItemViewer.class);
@@ -86,6 +78,10 @@ public class RecipeList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        /**
+         * this onItemLongClickListener takes the recipe selected by user and opens it in the RecipeEditor activity.
+         * */
         listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -102,6 +98,10 @@ public class RecipeList extends AppCompatActivity {
             }
         });
 
+        /**
+         * this onClickListener for the floating action button is for creating a new recipe.
+         * opens the RecipeEditor to create a new recipe.
+         * */
         //onclicklistener for the floating action button : creates a recipe
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +130,10 @@ public class RecipeList extends AppCompatActivity {
         listview.setAdapter(adapter);
 
 
+        /**
+         * Edit button allows user to delete recipes. Opens a fragment with the necessary views and functions to fill
+         * this task.
+         * */
         TextView editBtn = findViewById(R.id.editBtnRecipe);
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override

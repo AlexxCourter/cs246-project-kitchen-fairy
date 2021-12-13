@@ -14,6 +14,10 @@ public class MainActivity extends AppCompatActivity {
     ImageView myImage;
     ObjectAnimator objectAnimator;
 
+    /**
+     * onCreate, the mainactivity acts as a splash page which shows the app logo, which will move by an animation. After the
+     * Splash timer is up, sends to the HomeActivity which acts as the app home screen.
+     * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

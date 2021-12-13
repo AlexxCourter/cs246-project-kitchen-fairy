@@ -73,15 +73,9 @@ public class UserReference {
         this.username = username;
     }
 
-    public void reset() {
-        //display a message, then reset the user data if the user affirms
-        String TAG = "Reset";
-        Log.d(TAG, "About to reset user data");
-
-    }
-
-
-
+    /**
+     * @return instance : the current global instance of the UserReference singleton.
+     * */
     public static UserReference getInstance() {
         if (instance == null) {
             synchronized(UserReference.class) {
@@ -93,6 +87,10 @@ public class UserReference {
         return instance;
     }
 
+    /**
+     * updates the current reference based on a UserReference with updated values.
+     * @param user : the updated UserReference with new recipe information.
+     * */
     public static void updateReferenceRecipe(UserReference user) {
         //updates current reference with a new UserReference containing recipe updates
         instance.setRecipeIDHolder(instance.getRecipeIDHolder() + 1); //add 1 to recipe ID
@@ -100,12 +98,20 @@ public class UserReference {
 
     }
 
+    /**
+     * updates the current reference based on a UserReference with updated values.
+     * @param user : the updated UserReference with new Shopping object information.
+     * */
     public static void updateReferenceShopping(UserReference user) {
         //updates current reference with a new UserReference containing Shopping updates
         instance.setShoppingIDHolder(instance.getShoppingIDHolder() + 1); //add 1 to shopping ID
         instance.shoppingLists = user.shoppingLists;
     }
 
+    /**
+     * updates the current reference based on a UserReference with updated values.
+     * @param user : the updated UserReference with new information.
+     * */
     public static void loadUpdate(UserReference user){
         //wholesale update which changes all data to match a loaded reference
         if (user != null) {

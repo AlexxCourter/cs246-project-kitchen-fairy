@@ -56,6 +56,11 @@ public class RecipeEditor extends AppCompatActivity {
     Recipe model;
     int id;
 
+    /**
+     * sets the layout for a RecipeEditor. Gets intent containing a recipe from the calling activity.
+     * Gets the views and prepares lists to populate the editor with available data.
+     * populates the ingredients, instructions, image, and name of the recipe if available.
+     * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -237,7 +242,10 @@ public class RecipeEditor extends AppCompatActivity {
     }
 
 
-
+    /**
+     * openGallery starts an intent that opens the device image gallery
+     * allows the user to select an image from the gallery and send to onActivityResult
+     * */
     private void openGallery() {
         Intent gallery =
                 new Intent(Intent.ACTION_PICK,
@@ -245,6 +253,11 @@ public class RecipeEditor extends AppCompatActivity {
         startActivityForResult(gallery, PICK_IMAGE);
     }
 
+    /**
+     * called for the openGallery function to save the uri of the user selected image.
+     * Calls captureBitmap to save a bitmap version of the uri so that the img can be stored
+     * locally instead of trying to persist permissions to access it.
+     * */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

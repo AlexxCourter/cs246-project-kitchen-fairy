@@ -21,6 +21,15 @@ public class ListViewAdapterEdit extends ArrayAdapter<ItemModel> {
     Context context;
     boolean isRecipe;
 
+    /**
+     * Constructor for ListViewAdapterEdit
+     * extended from ArrayAdapter, so calls super() to execute parent constructor requirements
+     * saves the context, the list of items, and a boolean value that is true in the case of Recipe objects.
+     *
+     * @param context : the context in which the adapter is being used
+     * @param items : an arraylist of strings representing the items to be displayed in the listview
+     * @param isRecipe : a boolean representing if the ItemModel present is a Recipe or Shopping object. True for recipes
+     * */
     public ListViewAdapterEdit(Context context, ArrayList<ItemModel> items, boolean isRecipe) {
         super(context, R.layout.list_row_edit, items);
         this.context = context;
@@ -28,6 +37,11 @@ public class ListViewAdapterEdit extends ArrayAdapter<ItemModel> {
         this.isRecipe = isRecipe;
     }
 
+    /**
+     * inflates the layout list_row and populates it with available data. Sets the name and a button for removal of the item.
+     * Includes an onClickListener that when a remove button is tapped, calls the deleteRecipeById function that removes
+     * the recipe at the specified position.
+     * */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -36,7 +50,6 @@ public class ListViewAdapterEdit extends ArrayAdapter<ItemModel> {
             convertView = layoutinflater.inflate(R.layout.list_row_edit, null);
 
             DataController dc = new DataController();
-            UserReference ur = UserReference.getInstance();
 
             TextView name = convertView.findViewById(R.id.itemName);
             ItemModel item = list.get(position);

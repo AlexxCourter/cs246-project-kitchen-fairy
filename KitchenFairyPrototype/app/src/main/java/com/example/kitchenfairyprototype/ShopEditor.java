@@ -119,6 +119,10 @@ public class ShopEditor extends AppCompatActivity {
 
     } //end onCreate
 
+    /**
+     * creates a new shopping object. Sets the name to the current date.
+     * returns a shopping object if successful. returns null if failed.
+     * */
     public Shopping makeShoppingObject(){
         //prepare the data to be saved in a new Shopping() object.
         //use the date as the name of the list

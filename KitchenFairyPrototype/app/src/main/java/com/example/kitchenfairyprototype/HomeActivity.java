@@ -17,7 +17,11 @@ public class HomeActivity extends AppCompatActivity {
     protected UserReference user;
 
 
-
+    /**
+     * The HomeActivity onCreate initializes new user data if a save file cannot be found.
+     * displays the home screen layout.
+     * contains two button click listeners to open either the recipe list, or shopping lists activities.
+     * */
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,10 @@ public class HomeActivity extends AppCompatActivity {
 
 
         //button event listeners. These need to be instantiated somewhere with activity callback, like the onCreate method
+        /**
+         * Finds the Recipes button view by id
+         * sets an onclicklistener that starts the RecipeList activity with intent.
+         * */
         //Recipes button
         Button btnRecipe = findViewById(R.id.btnRecipe);
         btnRecipe.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +74,10 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        /**
+         * Finds the Shopping Lists button view by id
+         * sets an onclicklistener that starts the ShopList activity with intent.
+         * */
         //Shopping Lists button
         Button btnShopping = findViewById(R.id.btnShopping);
         btnShopping.setOnClickListener(new View.OnClickListener() {

@@ -21,18 +21,15 @@ import java.util.ArrayList;
  */
 public class EditScreen extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    //the names of these member variables are abstract. They are simple references to the pets of the sponsor.
     private static final String ARG_LIST_KEY = "Tedo";
     private static final String ARG_LIST_TYPE_KEY = "Zazu";
 
-    // TODO: Rename and change types of parameters
     private ArrayList<Integer> tedo;
     private ArrayList<ItemModel> kiara = new ArrayList<>();
     private boolean zazu;
 
     TextView close;
-    ImageView home;
     ListView lvEditScreen;
     ListViewAdapterEdit adapter;
 

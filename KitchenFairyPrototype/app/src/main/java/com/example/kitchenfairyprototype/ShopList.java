@@ -35,17 +35,7 @@ public class ShopList extends AppCompatActivity {
         fab = findViewById(R.id.faCreateShop);
         user = UserReference.getInstance();
 
-        //instantiate a list of items
-//        ArrayList<String> testItems = new ArrayList<>();
-        //add items to list
-
-        //code between these comments is debug only
-//        testItems.add("mountain dew");
-//        testItems.add("Doritos");
-//        testItems.add("Mochi");
         lists = new ArrayList<>();
-//        Shopping test = new Shopping(1,"test list", testItems);
-//        lists.add(test);
         listsNames = new ArrayList<>();
 
         for (ItemModel s : user.shoppingLists){
@@ -55,7 +45,6 @@ public class ShopList extends AppCompatActivity {
         for (ItemModel s : lists) {
             listsNames.add(s.toString());
         }
-        //the code between these comments is debug only. Remove at next phase
 
         //set an onitemclicklistener that catches clicks on the shopping lists.
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {

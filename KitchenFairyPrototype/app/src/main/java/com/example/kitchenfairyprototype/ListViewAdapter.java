@@ -18,12 +18,24 @@ public class ListViewAdapter extends ArrayAdapter<String> {
     ArrayList<String> list;
     Context context;
 
+    /**
+     * Constructor for ListViewAdapter
+     * extended from ArrayAdapter, so calls super() to execute parent constructor requirements
+     * saves the context, and the list of items
+     *
+     * @param context : the context in which the adapter is being used
+     * @param items : an arraylist of strings representing the items to be displayed in the listview
+     * */
     public ListViewAdapter(Context context, ArrayList<String> items) {
         super(context, R.layout.list_row, items);
         this.context = context;
         list = items;
     }
 
+
+    /**
+     * inflates the layout list_row and populates it with available data.
+     * */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
