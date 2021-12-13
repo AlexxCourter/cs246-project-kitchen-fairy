@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="3sp">
+
+    <TextView
+        android:id="@+id/itemNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/itemName"
+        android:layout_marginBottom="2sp"
+        android:textColor="#000111"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/itemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="28sp"
+        android:textColor="#000"
+        android:textSize="14sp"
+        />
+
+    <ImageView
+        android:layout_width="22sp"
+        android:layout_height="22sp"
+        android:layout_marginRight="18sp"
+        android:id="@+id/copy"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/remove"
+        android:src="@drawable/ic_baseline_content_copy_24"
+        />
+    <ImageView
+        android:layout_width="22sp"
+        android:layout_height="22sp"
+        android:layout_marginRight="18sp"
+        android:id="@+id/remove"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_baseline_remove_circle_24"
+        android:layout_alignParentRight="true"
+        />
+
+</RelativeLayout>
