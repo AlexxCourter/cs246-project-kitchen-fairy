@@ -20,9 +20,9 @@ import java.util.ArrayList;
 
 public class RecipeList extends AppCompatActivity {
 
-    ListView listview;
-    ArrayList<ItemModel> lists;
-    ArrayAdapter<String> adapter;
+    static ListView listview;
+    static ArrayList<ItemModel> lists;
+    static ArrayAdapter<String> adapter;
     UserReference user;
     ArrayList<String> listsNames;
     FloatingActionButton fab;
@@ -141,7 +141,7 @@ public class RecipeList extends AppCompatActivity {
                 //show the new listview with remove buttons by inflating fragment
                 EditScreen fragment = EditScreen.newInstance(true);
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.add(R.id.editScreenContainer, fragment);
+                transaction.add(R.id.recipeListContainer, fragment);
                 //hide the old edit button and listview until closed
                 editBtn.setVisibility(View.GONE);
                 listview.setVisibility(View.GONE);
@@ -152,5 +152,17 @@ public class RecipeList extends AppCompatActivity {
                 //if yes, the item is removed from the list by DataController
             }
         });
+    }
+
+    /**
+     * removes an item from the visible listview
+     * updates the adapter to reflect changes dynamically
+     *
+     * @param position : an integer representing the index position of the
+     *                 item to be removed.
+     * */
+    public static void removeItem(int position){
+        lists.remove(position);
+        listview.setAdapter(adapter);
     }
 }

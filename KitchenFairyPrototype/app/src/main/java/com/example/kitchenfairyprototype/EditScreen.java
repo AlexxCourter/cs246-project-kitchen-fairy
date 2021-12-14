@@ -73,7 +73,7 @@ public class EditScreen extends Fragment {
             }
         }
 
-        ListViewAdapterEdit adapter = new ListViewAdapterEdit(getContext(), kiara, zazu);
+
 
     }
 
@@ -84,8 +84,9 @@ public class EditScreen extends Fragment {
         View view = inflater.inflate(R.layout.fragment_edit_screen, container, false);
 
         close = view.findViewById(R.id.closeBtnEdit);
-        lvEditScreen = view.findViewById(R.id.lvListEditor);
+        lvEditScreen = view.findViewById(R.id.lvListEdit);
 
+        ListViewAdapterEdit adapter = new ListViewAdapterEdit(getContext(), kiara, zazu);
         lvEditScreen.setAdapter(adapter);
 
         close.setOnClickListener(new View.OnClickListener() {

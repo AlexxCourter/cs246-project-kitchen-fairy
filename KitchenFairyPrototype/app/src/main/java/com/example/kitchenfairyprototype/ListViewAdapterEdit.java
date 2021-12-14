@@ -61,12 +61,17 @@ public class ListViewAdapterEdit extends ArrayAdapter<ItemModel> {
                 @Override
                 public void onClick(View v) {
                     //initiate sequence for deletion of item
+                    ItemModel deletion = list.get(position);
                     if(isRecipe){
-                        dc.deleteRecipeById(position);
-                    } else {
-                        dc.deleteShoppingById(position);
-                    }
+                        dc.deleteRecipeById(deletion.id);
+                        RecipeList.removeItem(position);
 
+                    } else {
+                        dc.deleteShoppingById(deletion.id);
+                        ShopList.removeItem(position);
+
+                    }
+                    dc.saveReference(getContext());
                 }
             });
 

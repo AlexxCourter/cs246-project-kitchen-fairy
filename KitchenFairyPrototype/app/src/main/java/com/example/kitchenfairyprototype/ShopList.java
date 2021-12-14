@@ -18,9 +18,9 @@ import java.util.ArrayList;
 
 public class ShopList extends AppCompatActivity {
 
-    ListView listview;
-    ArrayList<ItemModel> lists;
-    ArrayAdapter<String> adapter;
+    static ListView listview;
+    static ArrayList<ItemModel> lists;
+    static ArrayAdapter<String> adapter;
     UserReference user; //ideally this is where access to current lists would come from
     ArrayList<String> listsNames;
     FloatingActionButton fab;
@@ -89,6 +89,18 @@ public class ShopList extends AppCompatActivity {
 
         //instantiate and set the adapter
         adapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_list_item_1, listsNames);
+        listview.setAdapter(adapter);
+    }
+
+    /**
+     * removes an item from the visible listview
+     * updates the adapter to reflect changes dynamically
+     *
+     * @param position : an integer representing the index position of the
+     *                 item to be removed.
+     * */
+    public static void removeItem(int position){
+        lists.remove(position);
         listview.setAdapter(adapter);
     }
 
