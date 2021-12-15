@@ -1,6 +1,7 @@
 package com.example.kitchenfairyprototype;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -90,7 +92,31 @@ public class ShopList extends AppCompatActivity {
         //instantiate and set the adapter
         adapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_list_item_1, listsNames);
         listview.setAdapter(adapter);
+
+        /**
+         * Edit button allows user to delete recipes. Opens a fragment with the necessary views and functions to fill
+         * this task.
+         * */
+        TextView editBtn = findViewById(R.id.editBtnShop);
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //show the new listview with remove buttons by inflating fragment
+                EditScreen fragment = EditScreen.newInstance(false);
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.add(R.id.shopListContainer, fragment);
+                //hide the old edit button and listview until closed
+                editBtn.setVisibility(View.GONE);
+                listview.setVisibility(View.GONE);
+
+                transaction.commit();
+
+                //ask the user if they are sure they wish to delete the items
+                //if yes, the item is removed from the list by DataController
+            }
+        });
     }
+
 
     /**
      * removes an item from the visible listview

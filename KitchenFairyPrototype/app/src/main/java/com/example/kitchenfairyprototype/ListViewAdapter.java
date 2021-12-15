@@ -35,6 +35,7 @@ public class ListViewAdapter extends ArrayAdapter<String> {
 
     /**
      * inflates the layout list_row and populates it with available data.
+     * sets up the copy and remove buttons which either add a duplicate (copy) of the item, or removes the item selected
      * */
     @NonNull
     @Override
