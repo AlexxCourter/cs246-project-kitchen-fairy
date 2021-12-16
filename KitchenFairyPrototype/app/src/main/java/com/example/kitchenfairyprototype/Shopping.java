@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public class Shopping extends ItemModel implements Serializable {
 
-    /**
-     * member data included in the ItemModel super() call
-     * */
+    /*
+      member data included in the ItemModel super() call
+      */
 
     /**
      * Constructor sets up all required data objects in the Recipe. simply calls super() to fill the data of an ItemModel

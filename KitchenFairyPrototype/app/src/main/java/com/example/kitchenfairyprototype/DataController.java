@@ -1,11 +1,7 @@
 package com.example.kitchenfairyprototype;
 
-import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
-
 import com.google.gson.Gson;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -62,12 +58,11 @@ public class DataController {
      * object's update() function should be called to transfer data from the loaded reference
      * to the currently active UserReference singleton.
      *
-     * @param fileName : the name of the file. Should be "UserReference.json"
      * @param context : the application context. Needed to run the file and directory searches.
      *                Passed into the loadReference() function from the calling activity which
      *                should have the application context stored.
      * */
-    public static UserReference loadReference(String fileName, Context context) {
+    public static UserReference loadReference(Context context) {
         //create new GSON instance.
         Gson gson = new Gson();
 
@@ -196,7 +191,7 @@ public class DataController {
                 }
             }
             ur.recipes = newList;
-            ur.setRecipeIDHolder(newList.size() + 1);
+            ur.setRecipeIDHolder(newList.size() + 2);
             //call saveReference from calling activity
         }
     }
@@ -221,7 +216,7 @@ public class DataController {
                 }
             }
             ur.shoppingLists = newList;
-            ur.setRecipeIDHolder(newList.size() + 1);
+            ur.setShoppingIDHolder(newList.size() + 2);
             //call saveReference from calling activity
         }
     }

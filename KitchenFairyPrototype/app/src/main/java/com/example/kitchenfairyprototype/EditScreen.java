@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,10 +21,8 @@ import java.util.ArrayList;
 public class EditScreen extends Fragment {
 
     //the names of these member variables are abstract. They are simple references to the pets of the sponsor.
-    private static final String ARG_LIST_KEY = "Tedo";
     private static final String ARG_LIST_TYPE_KEY = "Zazu";
 
-    private ArrayList<Integer> tedo;
     private ArrayList<ItemModel> kiara = new ArrayList<>();
     private boolean zazu;
 
@@ -47,7 +44,6 @@ public class EditScreen extends Fragment {
     public static EditScreen newInstance(boolean param2) {
         EditScreen fragment = new EditScreen();
         Bundle args = new Bundle();
-//        args.putIntegerArrayList(ARG_LIST_KEY, param1);
         args.putBoolean(ARG_LIST_TYPE_KEY, param2);
         fragment.setArguments(args);
         return fragment;
@@ -59,7 +55,6 @@ public class EditScreen extends Fragment {
         UserReference ur = UserReference.getInstance();
 
         if (getArguments() != null) {
-//            tedo = getArguments().getIntegerArrayList(ARG_LIST_KEY);
             zazu = getArguments().getBoolean(ARG_LIST_TYPE_KEY);
         }
 
@@ -86,7 +81,7 @@ public class EditScreen extends Fragment {
         close = view.findViewById(R.id.closeBtnEdit);
         lvEditScreen = view.findViewById(R.id.lvListEdit);
 
-        ListViewAdapterEdit adapter = new ListViewAdapterEdit(getContext(), kiara, zazu);
+        adapter = new ListViewAdapterEdit(getContext(), kiara, zazu);
         lvEditScreen.setAdapter(adapter);
 
         close.setOnClickListener(new View.OnClickListener() {

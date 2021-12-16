@@ -5,13 +5,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -47,7 +45,7 @@ public class RecipeList extends AppCompatActivity {
         fab = findViewById(R.id.faCreateRecipe);
 
         //add items to lists
-        lists = new ArrayList<ItemModel>();
+        lists = new ArrayList<>();
 
         for (ItemModel r : user.recipes){
             lists.add(r);
@@ -59,14 +57,13 @@ public class RecipeList extends AppCompatActivity {
         }
         //the code between these comments is debug only. Remove at next phase
 
-        /**
-         * this onItemClickListener takes the recipe selected by user and opens it in the ItemViewer activity.
-         * */
+        /*
+          this onItemClickListener takes the recipe selected by user and opens it in the ItemViewer activity.
+          */
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 System.out.println(position);
-                String name = listsNames.get(position);
                 ItemModel item = lists.get(position); //access item and send to viewing activity
                 //bundle the object. Helps protect it from becoming null when passed
                 Bundle bundle = new Bundle();
@@ -79,9 +76,9 @@ public class RecipeList extends AppCompatActivity {
             }
         });
 
-        /**
-         * this onItemLongClickListener takes the recipe selected by user and opens it in the RecipeEditor activity.
-         * */
+        /*
+          this onItemLongClickListener takes the recipe selected by user and opens it in the RecipeEditor activity.
+          */
         listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -98,11 +95,11 @@ public class RecipeList extends AppCompatActivity {
             }
         });
 
-        /**
-         * this onClickListener for the floating action button is for creating a new recipe.
-         * opens the RecipeEditor to create a new recipe.
-         * */
-        //onclicklistener for the floating action button : creates a recipe
+        /*
+          this onClickListener for the floating action button is for creating a new recipe.
+          opens the RecipeEditor to create a new recipe.
+          */
+        //onClickListener for the floating action button : creates a recipe
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,10 +127,10 @@ public class RecipeList extends AppCompatActivity {
         listview.setAdapter(adapter);
 
 
-        /**
-         * Edit button allows user to delete recipes. Opens a fragment with the necessary views and functions to fill
-         * this task.
-         * */
+        /*
+          Edit button allows user to delete recipes. Opens a fragment with the necessary views and functions to fill
+          this task.
+          */
         TextView editBtn = findViewById(R.id.editBtnRecipe);
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override

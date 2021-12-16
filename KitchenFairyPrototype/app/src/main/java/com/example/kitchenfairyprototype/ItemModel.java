@@ -1,7 +1,6 @@
 package com.example.kitchenfairyprototype;
 
-import android.graphics.Bitmap;
-import android.net.Uri;
+import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -36,6 +35,7 @@ public class ItemModel implements Serializable {
      * Simply returns the name of the ItemModel
      * @return string ItemModel name
      * */
+    @NonNull
     @Override
     public String toString() {
         return name;

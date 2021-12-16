@@ -10,12 +10,12 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private static int SPLASH_TIME = 2000;
+    private static final int SPLASH_TIME = 2000;
     ImageView myImage;
     ObjectAnimator objectAnimator;
 
     /**
-     * onCreate, the mainactivity acts as a splash page which shows the app logo, which will move by an animation. After the
+     * onCreate, the MainActivity acts as a splash page which shows the app logo, which will move by an animation. After the
      * Splash timer is up, sends to the HomeActivity which acts as the app home screen.
      * */
     @Override

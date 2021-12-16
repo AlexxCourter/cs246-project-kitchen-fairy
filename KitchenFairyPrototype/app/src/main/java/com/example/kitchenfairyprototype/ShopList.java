@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -48,7 +47,7 @@ public class ShopList extends AppCompatActivity {
             listsNames.add(s.toString());
         }
 
-        //set an onitemclicklistener that catches clicks on the shopping lists.
+        //set an onItemClickListener that catches clicks on the shopping lists.
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -68,7 +67,7 @@ public class ShopList extends AppCompatActivity {
             }
         });
 
-        //onclicklistener for the floating action button : creates a recipe
+        //onClickListener for the floating action button : creates a recipe
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,10 +92,10 @@ public class ShopList extends AppCompatActivity {
         adapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_list_item_1, listsNames);
         listview.setAdapter(adapter);
 
-        /**
-         * Edit button allows user to delete recipes. Opens a fragment with the necessary views and functions to fill
-         * this task.
-         * */
+        /*
+          Edit button allows user to delete recipes. Opens a fragment with the necessary views and functions to fill
+          this task.
+          */
         TextView editBtn = findViewById(R.id.editBtnShop);
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override

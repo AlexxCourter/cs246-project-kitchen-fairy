@@ -1,9 +1,7 @@
 package com.example.kitchenfairyprototype;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,12 +15,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
-import java.io.ByteArrayOutputStream;
 import java.io.FileDescriptor;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.chrono.MinguoEra;
 import java.util.ArrayList;
 
 /**
@@ -34,7 +28,6 @@ public class RecipeEditor extends AppCompatActivity {
 
     private static final int PICK_IMAGE = 123192;
 
-    UserReference user = UserReference.getInstance();
     static ListView lvIngredients;
     static ListView lvInstructions;
     static ArrayList<String> items;
@@ -48,7 +41,6 @@ public class RecipeEditor extends AppCompatActivity {
     EditText ingInput;
 
     ImageView ingEnter;
-    ImageView saveRecipe;
     EditText editName;
     ImageView nextScreen;
     ImageView itemImg;
@@ -109,10 +101,10 @@ public class RecipeEditor extends AppCompatActivity {
             }
         }
 
-        /**
-         * Click Listeners for the Ingredient editor listviews.
-         * */
-        //onitemclick for items of listview items
+        /*
+          Click Listeners for the Ingredient editor listviews.
+          */
+        //onItemClickListener for items of listview items
         lvIngredients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -121,7 +113,7 @@ public class RecipeEditor extends AppCompatActivity {
             }
         });
 
-        //onitemlongclick removes an item from the list
+        //onItemLongClickListener removes an item from the list
         lvIngredients.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -166,12 +158,6 @@ public class RecipeEditor extends AppCompatActivity {
             public void onClick(View v) {
 
                 String name = String.valueOf(editName.getText());
-                String uriRef = null;
-                if(itemUri != null){
-                    uriRef = itemUri.toString();
-                } else {
-                    uriRef = null;
-                }
 
                 if (itemBit != null){
                     byteArray = BitByteAdapter.toByteArray(itemBit);

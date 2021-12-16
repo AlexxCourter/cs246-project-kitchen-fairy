@@ -1,22 +1,7 @@
 package com.example.kitchenfairyprototype;
 
-import android.content.Context;
-import android.os.Build;
-import android.util.Log;
+import androidx.annotation.NonNull;
 
-import androidx.annotation.RequiresApi;
-
-import com.google.gson.Gson;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 
@@ -40,8 +25,6 @@ public class UserReference {
     protected ArrayList<Shopping> shoppingLists = new ArrayList<>();
     protected ArrayList<Recipe> recipes = new ArrayList<>();
     protected static boolean NEW_USER = true;
-    //gson for save data
-    Gson gson;
 
     //constructor
     private UserReference() {
@@ -126,6 +109,7 @@ public class UserReference {
         }
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "UserReference{" +

@@ -2,11 +2,8 @@ package com.example.kitchenfairyprototype;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
 /**
@@ -27,11 +23,11 @@ public class RecipeEditorScreenTwo extends Fragment {
 
     UserReference user = UserReference.getInstance();
     //The keys used in the bundle to put arguments
-    private static String ARG_INGR_KEY = "ingredient";
-    private static String ARG_NAME_KEY = "name";
-    private static String ARG_IMG_KEY = "img";
-    private static String ARG_NOTE_KEY = "notes";
-    private static String ARG_ID_KEY = "id";
+    private static final String ARG_INGR_KEY = "ingredient";
+    private static final String ARG_NAME_KEY = "name";
+    private static final String ARG_IMG_KEY = "img";
+    private static final String ARG_NOTE_KEY = "notes";
+    private static final String ARG_ID_KEY = "id";
 
     public static ArrayList<String> getArgIngredient() {
         return ARG_INGREDIENT;
@@ -138,10 +134,10 @@ public class RecipeEditorScreenTwo extends Fragment {
             }
         });
 
-        /**
-         * Click Listeners for the Instruction editor listviews.
-         * */
-        //onitemclick for items of listview items
+        /*
+          Click Listeners for the Instruction editor listviews.
+          */
+        //onItemClickListener for items of listview items
         lvInstructions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -150,7 +146,7 @@ public class RecipeEditorScreenTwo extends Fragment {
             }
         });
 
-        //onitemlongclick removes an item from the list
+        //onItemLongClickListener removes an item from the list
         lvInstructions.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -174,7 +170,7 @@ public class RecipeEditorScreenTwo extends Fragment {
                     UserReference.updateReferenceRecipe(user);
                 }
                 //call the methods that add a Recipe() to the current UserReference and saves
-                dc.saveReference(getContext().getApplicationContext());
+                dc.saveReference(getContext());
                 //display a toast "Recipe saved"
                 makeToast("Recipe saved");
                 //use an intent to go back to the RecipeList activity
@@ -238,7 +234,7 @@ public class RecipeEditorScreenTwo extends Fragment {
      * */
     private void makeToast(String s) {
         if (t != null) t.cancel();
-        t = Toast.makeText(getContext().getApplicationContext(), s, Toast.LENGTH_SHORT);
+        t = Toast.makeText(getContext(), s, Toast.LENGTH_SHORT);
         t.show();
     }
 

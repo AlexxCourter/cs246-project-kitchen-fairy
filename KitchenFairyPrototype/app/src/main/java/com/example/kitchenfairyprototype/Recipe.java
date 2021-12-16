@@ -1,18 +1,14 @@
 package com.example.kitchenfairyprototype;
 
-import android.graphics.Bitmap;
-import android.net.Uri;
-
 import androidx.annotation.NonNull;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Recipe extends ItemModel implements Serializable {
     //ItemModel specifically for recipes
-    /**
-     * member data included in the ItemModel super() call
-     * */
+    /*
+      member data included in the ItemModel super() call
+      */
 
     /**
      * Constructor sets up all required data objects in the Recipe. simply calls super() to fill the data of an ItemModel

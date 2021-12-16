@@ -32,7 +32,7 @@ public class HomeActivity extends AppCompatActivity {
 
         //read saved data and apply to UserReference
         try {
-            UserReference loader = dc.loadReference("UserReference.json", this.getApplicationContext());
+            UserReference loader = dc.loadReference(this.getApplicationContext());
             user = loader;
             UserReference.loadUpdate(user);
             Log.d(TAG, user.toString());
